@@ -55,6 +55,10 @@ export default {
     {
       code: 'function fn() {}; type f = { get(key: fn): string, get(key: fn): string }',
       errors: [{message: 'Duplicate property.'}]
+    },
+    {
+      code: 'type a = {}; type f = { a: number, ...a, a: number }',
+      errors: [{message: 'Duplicate property.'}]
     }
   ],
   valid: [
@@ -107,6 +111,9 @@ export default {
     },
     {
       code: 'var a = 1; var b = 1; type f = { get(key: a): string, get(key: b): string }'
+    },
+    {
+      code: 'type a = {}; type f = { a: number, ...a, b: string}'
     }
   ]
 };
